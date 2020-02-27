@@ -28,13 +28,18 @@ final List<transaction> Transaction =[
 
 ];
 
+// String titleInput;
+// String amountInput;
+final titleController= TextEditingController();
+final amountController=TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter App"),
+        title: Text("Transaction Cal"),
       ),
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.start,
@@ -60,18 +65,33 @@ final List<transaction> Transaction =[
                     TextField(
                       decoration: InputDecoration(
                         labelText: 'Title'
+                        
                       ),
+                      controller: titleController,
+                      // onChanged: (value){
+                      //   //titleInput=value;
+                    
+                      // },
                     ),
                     TextField(
                       decoration: InputDecoration(
                         labelText: 'Amount'
                       ),
+                      controller: amountController,
+                      // onChanged: (value){
+                      //   amountInput=value;
+                      // },
                     ),
                     FlatButton(child: Text(
                       'Add Transaction',
                       
                     ),
-                    onPressed: (){},
+                    
+                    onPressed: (){
+                      print(titleController.text);
+                      print(amountController.text);
+                      
+                    },
                     textColor: Colors.purple,
                     ),
                   ],
