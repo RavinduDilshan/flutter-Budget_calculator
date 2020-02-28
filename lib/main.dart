@@ -35,27 +35,29 @@ final amountController=TextEditingController();
       appBar: AppBar(
         title: Text("Transaction Cal"),
       ),
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-           
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              elevation: 5.0,
-                child: Text("chart"),
+      body: SingleChildScrollView(
+              child: Column(
+          //mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+             
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                elevation: 5.0,
+                  child: Text("chart"),
+              ),
             ),
-          ),
 
-          userTransaction(),
+            userTransaction(),
 
-         
+           
 
 
-        ],
+          ],
 
+        ),
       )
 
     );
