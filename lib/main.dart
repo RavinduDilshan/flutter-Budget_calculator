@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
+     
+
       home: myHomePage(),
      
       
@@ -34,6 +36,14 @@ final amountController=TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text("Transaction Cal"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add,),
+            onPressed:(){
+
+            } ,
+          ),
+        ],
       ),
       body: SingleChildScrollView(
               child: Column(
@@ -58,7 +68,15 @@ final amountController=TextEditingController();
           ],
 
         ),
-      )
+      ),
+      floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat ,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+
+        },
+
+      ),
 
     );
   }
