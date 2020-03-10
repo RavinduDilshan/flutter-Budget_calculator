@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:newapp/widgets/newTransaction.dart';
-import 'package:newapp/widgets/userTransaction.dart';
+import 'widgets/transactionList.dart';
 import './widgets/transactionList.dart';
+import 'models/transaction.dart';
 
 
 
@@ -22,13 +23,49 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class myHomePage extends StatelessWidget{
+class myHomePage extends StatefulWidget{
 
 // String titleInput;
 // String amountInput;
-final titleController= TextEditingController();
-final amountController=TextEditingController();
+  @override
+  _myHomePageState createState() => _myHomePageState();
+}
 
+class _myHomePageState extends State<myHomePage> {
+
+
+
+ final List<transaction> _userTransactions =[
+
+    transaction(id: 't1',title: 'new shoes',amount: 69.99,date: DateTime.now()),
+    transaction(id: 't2',title: 'new beer',amount: 69.0,date: DateTime.now()),
+
+  ];
+
+    void _addNewTransaction(String txTitle,double txAmount){
+      final newTx = transaction(id:DateTime.now().toString(),title: txTitle, amount: txAmount,date: DateTime.now());
+      
+      setState(() {
+        _userTransactions.add(newTx);
+      });
+
+    }
+
+
+void _startAddNewTransaction(BuildContext ctx){
+  showModalBottomSheet(context: ctx, builder: (_){
+    return GestureDetector(
+      onTap: (){},
+      child:newTransaction(_addNewTransaction),
+      behavior: HitTestBehavior.opaque,
+      ) ;
+      
+
+
+
+
+  },);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +76,7 @@ final amountController=TextEditingController();
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add,),
-            onPressed:(){
-
-            } ,
+            onPressed:()=>_startAddNewTransaction(context) ,
           ),
         ],
       ),
@@ -60,7 +95,7 @@ final amountController=TextEditingController();
               ),
             ),
 
-            userTransaction(),
+           transactionList(_userTransactions),
 
            
 
@@ -72,19 +107,11 @@ final amountController=TextEditingController();
       floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat ,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: (){
-
-        },
+         onPressed:()=>_startAddNewTransaction(context) ,
 
       ),
 
     );
   }
-
-  
-
-
-
-
 }
 
